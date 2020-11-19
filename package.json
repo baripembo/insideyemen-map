@@ -2,7 +2,7 @@
   "name": "viz-yemen",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://github.com/baripembo/viz-yemen.git",
+  "homepage": "https://github.com/ocha-dap/a-journey-of-462km-Yemen.git",
   "main": " ",
   "scripts": {
     "start": "http-server ./dist -c-1 -p 3000",
