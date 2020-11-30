@@ -157,7 +157,7 @@ $( document ).ready(function() {
         'icon-size': { 'type': 'identity', 'property': 'iconSize' },
         'text-field': '{name}',
         'text-font': ['DIN Pro Medium', 'Arial Unicode MS Bold'],
-        'text-size': 16,
+        'text-size': 18,
         'text-max-width': { 'type': 'identity', 'property': 'textMaxWidth' },
         'text-justify': 'left',
         'text-offset': { 'type': 'identity', 'property': 'textOffset' },
