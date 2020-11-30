@@ -43,10 +43,10 @@ h2 {
 
 h3 {
 	color: #3D3D3D;
-	font-size: 25px;
-	font-family: 'Stag-Book', serif;
+	font-size: 24px;
+	font-family: 'Stag-Medium', serif;
 	font-weight: bold;
-	line-height: 29px;
+	line-height: 36px;
 }
 
 h4 {
@@ -71,9 +71,9 @@ a {
 }
 
 p {
-	font-size: 14px;
+	font-size: 20px;
 	font-weight: normal;
-	line-height: 26px;
+	line-height: 30px;
 	margin: 28px 0;
 }
 
@@ -86,6 +86,7 @@ p {
   border: 1px solid #707070;
   border-radius: 10px;
   color: #fff;
+  display: inline-block;
   font-size: 25px;
   font-weight: 600;
   padding: 9px 26px;
@@ -97,8 +98,8 @@ p {
 
 p.small {
 	color: #888;
-	font-size: 11px;
-	line-height: 13px;
+	font-size: 12px;
+	line-height: 14px;
 	margin: 5px 0;
 }
 
@@ -229,7 +230,7 @@ footer {
 		color: #FFF;
 		font-size: 16px;
 		font-weight: 600;
-		line-height: 24px;
+		line-height: 26px;
 		margin: 28px auto;
 		text-align: center;
 		width: 450px;
@@ -288,7 +289,8 @@ figure p {
   	color: #FFF;
 	  padding: 15px 25px;
 	  p {
-	  	line-height: 20px;
+	  	font-size: 16px;
+	  	line-height: 26px;
 	  	margin: 18px 0;
 	  }
 	}
@@ -372,7 +374,7 @@ figure p {
 }
 
 .pin-container {
-	margin: 0 auto 60px;
+	margin: 60px auto;
 	width: 700px !important;
 	.pin-item {
 		margin: 0;
@@ -390,9 +392,9 @@ figure p {
 		background-color: #FFF;
 	  border: 1px solid #CCC;
 	  font-family: 'Stag-Book', serif;
-	  font-size: 14px;
+	  font-size: 16px;
     left: 50%;
-	  line-height: 21px;
+	  line-height: 22px;
 	  margin: 0 auto;
 		position: absolute;
 	  padding: 20px;
@@ -438,9 +440,9 @@ figure p {
 	    background-color: rgba(0,0,0,0.8);
 	    color: #fff;
 		  font-family: 'Stag-Book', serif;
-		  font-size: 14px;
+		  font-size: 16px;
 	    left: 5vw;
-		  line-height: 21px;
+		  line-height: 26px;
 		  margin: 0 auto;
 			position: absolute;
 		  padding: 20px;
@@ -500,6 +502,7 @@ figure p {
 	article {
 		margin-left: auto;
 		width: 88%;
+		z-index: 1;
 	}
 	.logos {
 		top: 25px;
