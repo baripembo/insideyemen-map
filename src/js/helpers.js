@@ -1,11 +1,11 @@
 // generic window resize listener event
 function handleResize() {
-  // 1. update height of step elements
-  var stepH = Math.floor(window.innerHeight);
+  //update height of step elements
+  var stepH = (isMobile) ? Math.floor(window.innerHeight)*2 : Math.floor(window.innerHeight);
   step.style("height", stepH + "px");
 
   //double height of last step
-  $(".step[data-step='4']").css("height", stepH*1.5 + "px");
+  if (!isMobile) $(".step[data-step='4']").css("height", stepH*1.5 + "px");
 
   var figureHeight = window.innerHeight;
   var figureMarginTop = (window.innerHeight - figureHeight) / 2;

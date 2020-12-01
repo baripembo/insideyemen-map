@@ -45,7 +45,8 @@ h3 {
 	color: #3D3D3D;
 	font-size: 24px;
 	font-family: 'Stag-Medium', serif;
-	font-weight: bold;
+	font-weight: normal;
+	letter-spacing: 0.3px;
 	line-height: 36px;
 }
 
@@ -168,16 +169,6 @@ footer {
 	width: 100%;
 }
 
-#static-map {
-	background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-}
-
 .bg-gradient {
 	//background-image: linear-gradient(rgba(52, 122, 180, 1), rgba(55, 122, 180, 0));
 	background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(255, 255, 255, 0));
@@ -192,6 +183,7 @@ footer {
 	height: 100vh;
 	position: absolute;
 	width: 100vw;
+	z-index: 2;
 	.inner {
 		color: #FFF;
 		left: 50%;
@@ -247,6 +239,7 @@ article {
   padding: 0;
   position: relative;
   width: 32vw;
+  z-index: 2;
   h3 {
   	color: #FFF;
   	margin-top: 15px;
@@ -264,7 +257,7 @@ figure {
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   background-color: #8a8a8a;
-  z-index: 0;
+  z-index: 1;
 }
 
 figure p {
@@ -502,7 +495,6 @@ figure p {
 	article {
 		margin-left: auto;
 		width: 88%;
-		z-index: 1;
 	}
 	.logos {
 		top: 25px;
@@ -538,7 +530,7 @@ figure p {
 	}
 	.step {
 		opacity: 1;
-		z-index: 2;
+		z-index: 3;
 	}
 	#outro, 
 	#conclusion {
@@ -555,7 +547,7 @@ figure p {
 		z-index: -1;
 	}
 	.annotation {
-		z-index: 3;
+		z-index: 4;
 		div {
 			width: 70%;
 		}

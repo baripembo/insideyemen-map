@@ -1,4 +1,4 @@
-var map, scroller, main, scrolly, figure, article, step, geoDataArray, viewportWidth, viewportHeight;
+var map, scroller, main, scrolly, figure, article, step, geoDataArray, viewportWidth, viewportHeight, isMobile;
 var currentIndex = 1;
 // var layerTypes = {
 //   'fill': ['fill-opacity'],
@@ -12,12 +12,12 @@ var currentIndex = 1;
 
 $( document ).ready(function() {
   const DATA_URL = 'data/';
-  var isMobile = $(window).width()<600? true : false;
   var dataUrls = ['route1.geojson', 'route2.geojson', 'route3.geojson'];
   geoDataArray = new Array(dataUrls.length);
   mapboxgl.accessToken = 'pk.eyJ1IjoiaHVtZGF0YSIsImEiOiJja2FvMW1wbDIwMzE2MnFwMW9teHQxOXhpIn0.Uri8IURftz3Jv5It51ISAA';
   viewportWidth = window.innerWidth;
   viewportHeight = window.innerHeight;
+  isMobile = (viewportWidth<767) ? true : false;
   
   function getData() {
     dataUrls.forEach(function (url, index) {
