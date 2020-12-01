@@ -32,7 +32,7 @@ $( document ).ready(function() {
       'assets/slideshow/aden-woman.jpg',
       'assets/slideshow/aden-idpsite.jpg',
       'assets/slideshow/aden-craiter.jpg',
-      'assets/slideshow/aden-aerial.jpg'
+      'assets/slideshow/aden-girl.jpg'
     ]);
   }
 
