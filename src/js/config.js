@@ -5,7 +5,6 @@ const config = {
       distance: '63.5',
       duration: '4 days',
       location: {
-        //center: [42.97983, 14.73442],
         zoom: 9.7,
         pitch: 40,
         bearing: 0
@@ -29,7 +28,6 @@ const config = {
       distance: '275.5',
       duration: '4 days',
       location: {
-        //center: [ 43.6011, 13.7187],
         zoom: 9.3,
         pitch: 60,
         bearing: 340
@@ -53,7 +51,6 @@ const config = {
       distance: '462',
       duration: '7 days',
       location: {
-        //center: [ 45.1184, 13.0328],
         zoom: 8.3,
         pitch: 40,
         bearing: 314
