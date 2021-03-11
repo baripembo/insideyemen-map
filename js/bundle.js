@@ -6,7 +6,6 @@ const config = {
       distance: '63.5',
       duration: '4 days',
       location: {
-        //center: [42.97983, 14.73442],
         zoom: 9.7,
         pitch: 40,
         bearing: 0
@@ -30,7 +29,6 @@ const config = {
       distance: '275.5',
       duration: '4 days',
       location: {
-        //center: [ 43.6011, 13.7187],
         zoom: 9.3,
         pitch: 60,
         bearing: 340
@@ -54,7 +52,6 @@ const config = {
       distance: '462',
       duration: '7 days',
       location: {
-        //center: [ 45.1184, 13.0328],
         zoom: 8.3,
         pitch: 40,
         bearing: 314
@@ -126,36 +123,8 @@ function setMapBounds(points, paddingBottom, bearing, pitch) {
   map.fitBounds(bbox, {padding: padding, bearing: bearing, pitch: pitch});
 }
 
-function initSlideshow() {
-  var controller = new ScrollMagic.Controller();
-  var captions = document.querySelectorAll('.caption');
-  for (var i=0; i<captions.length; i++) {
-    new ScrollMagic.Scene({
-        triggerElement: captions[i],
-        triggerHook: 0.9
-      })
-      .on('enter', function(e) {
-        var id = Number($(e.target.triggerElement()).data('caption'));
-        $('img[data-img="'+(id-1)+'"]').css('opacity', 0);
-      })
-      .on('leave', function(e) {
-        var id = Number($(e.target.triggerElement()).data('caption'));
-        $('img[data-img="'+(id-1)+'"]').css('opacity', 1);
-      })
-      .addTo(controller);
-  }
-}
 var map, scroller, main, scrolly, figure, article, step, geoDataArray, viewportWidth, viewportHeight, isMobile;
 var currentIndex = 1;
-// var layerTypes = {
-//   'fill': ['fill-opacity'],
-//   'line': ['line-opacity'],
-//   'circle': ['circle-opacity', 'circle-stroke-opacity'],
-//   'symbol': ['icon-opacity', 'text-opacity'],
-//   'raster': ['raster-opacity'],
-//   'fill-extrusion': ['fill-extrusion-opacity']
-// }
-
 
 $( document ).ready(function() {
   const DATA_URL = 'data/';
@@ -172,15 +141,6 @@ $( document ).ready(function() {
         parseData(JSON.parse(responseText), index);
       })
     })
-
-    //preload slideshow images
-    preload([
-      'assets/slideshow/aden-water.jpg',
-      'assets/slideshow/aden-woman.jpg',
-      'assets/slideshow/aden-idpsite.jpg',
-      'assets/slideshow/aden-craiter.jpg',
-      'assets/slideshow/aden-girl.jpg'
-    ]);
   }
 
   function loadData(dataPath, done) {
@@ -257,35 +217,21 @@ $( document ).ready(function() {
     map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/humdata/ckfx2jgjd10qx1bnzkla9px41/',
-      center: [47, 20],
-      minZoom: 1,
-      zoom: zoomLevel,
+      center: [48.21908, 15.53492],
+      zoom: 6.13,
       attributionControl: false
     });
-
-    //map.addControl(new mapboxgl.NavigationControl())
-    //map.addControl(new mapboxgl.AttributionControl(), 'bottom-right');
     map.scrollZoom.disable();
-
-    //add icon images
-    var iconArray = ['icon_marker'];
-    iconArray.forEach(function(imageName) {
-      map.loadImage('assets/icons/'+imageName+'.png', function(error, image) {
-        map.addImage(imageName, image);
-      });
-    });
 
     map.on('load', function() {
       console.log('Map loaded')
       $('.loader').remove();
       $('body').css('backgroundColor', '#FFF');
       $('main').css('opacity', 1);
+
       locationData();
       getData();
-      initIntro();
       initJourney();
-      initPins();
-      initSlideshow();
     });
   }
 
@@ -322,81 +268,6 @@ $( document ).ready(function() {
   }
 
 
-  function initIntro() {
-    //intro animation
-    var controller = new ScrollMagic.Controller();
-    var pinScene = new ScrollMagic.Scene({
-      triggerElement: "#introInner",
-      triggerHook: 0.2
-    })
-    .addTo(controller)
-    .on('enter', function(e) {
-      var location = {
-        center: [48.21908, 15.53492],
-        zoom: 6.13,
-        pitch: 0,
-        bearing: 0
-      };
-      map.flyTo(location);
-      $('.arrow-down').hide();
-    })
-    .on('leave', function(e) {
-      var location = {
-        center: [47, 20],
-        zoom: 4.7,
-        pitch: 0,
-        bearing: 0
-      };
-      map.flyTo(location);
-      $('.arrow-down').show();
-    });
-
-    //auto play/pause video
-    // var vid = document.getElementById('icrcVideo');
-    // var videoScene = new ScrollMagic.Scene({
-    //   triggerElement: "#icrcVideo",
-    //   triggerHook: 'onEnter', 
-    //   duration: '100%'
-    // })
-    // .addTo(controller)
-    // .on('enter', function(e) {
-    //   vid.play();
-    // })
-    // .on('leave', function(e) {
-    //   vid.pause();
-    // });
-
-
-    var total = 50;
-    var numAffected = Math.round(total * (2/3));
-    var timelineTween = new TimelineMax();
-
-    for (var i=0; i<total; i++) {
-      var person = (i%2==0) ? 'humanitarianicons-Person-2' : 'humanitarianicons-Person-1';
-      $('.icon-animation').append('<i class="'+person+'" id="icon'+ i +'"></i>');
-      if (i<=numAffected) {
-        var icon = '#icon'+i;
-        timelineTween.to(icon, 0.2, {color: '#E67800', opacity: 1, onStartParams: [icon], onStart: function(icon) {
-          //$(icon).attr('class', 'humanitarianicons-Affected-population');
-        }}, '-=.1');
-      }
-    }
-
-    var inNeedScene = new ScrollMagic.Scene({
-      triggerElement: '#pinIcons',
-      triggerHook: 'onEnter'
-    })
-    //.addIndicators()
-    .setTween(timelineTween)
-    .addTo(controller)
-    .on('start', function() {
-      timelineTween.invalidate().restart();
-      $('.icon-animation i').css('color', '#888');
-      $('.icon-animation i').css('opacity', 0.5);
-    });
-  }
-
-
   function initJourney() {
     scroller = scrollama();
     main = d3.select('main');
@@ -421,30 +292,17 @@ $( document ).ready(function() {
     window.addEventListener('resize', handleResize);
   }
 
-  function initPins() {
-    $('.pin-container').each(function() {
-      var item = $(this).find('.pin-item')[0];
-      var pos = Math.round(viewportHeight/2 - $(item).height()/2);
-      $(item).css('top', pos);
-    });
-  }
-
   function handleStepEnter(response) {
     currentIndex = response.index;
     var chapter = config.chapters[currentIndex];
     var location = chapter.location;
 
-    $('.ticker').addClass('active');
     map.setLayoutProperty('locationPoints', 'visibility', 'visible');
 
     // set active step
     step.classed('is-active', function(d, i) {
       return i === response.index;
     });
-
-    // if (chapter.onChapterEnter!=undefined && chapter.onChapterEnter.length > 0) {
-    //   chapter.onChapterEnter.forEach(setLayerOpacity);
-    // }
 
     if (geoDataArray[response.index]!==undefined) {
       var padding = 0;
@@ -458,16 +316,15 @@ $( document ).ready(function() {
     else {
       //zoom into adan
       map.flyTo(location);
+      map.on('moveend', function(e){
+        console.log('map end');
+        parent.mapEnd();
+      });
     }
-
-    if (response.index<config.chapters.length)
-      updateTicker(chapter.distance, chapter.duration);
   }
 
   function handleStepExit(response) {
     if (response.index==0 || response.index==config.chapters.length-1) {
-      $('.ticker').removeClass('active');
-
       if (response.index==0) {
         var location = {
           center: [48.21908, 15.53492],
@@ -480,29 +337,5 @@ $( document ).ready(function() {
     }
   }
 
-  function updateTicker(distance, duration) {
-    $('.ticker p').animate({
-      opacity: 0,
-      marginTop: '50px',
-    }, 400, function() {
-      $(this).text(distance + ' km. ' + duration + '.');
-      $(this).css('marginTop', '-50px').animate({
-        opacity: 1,
-        marginTop: '0'
-      }, 400);
-    });
-  }
-
-  function initTracking() {
-    //initialize mixpanel
-    let MIXPANEL_TOKEN = window.location.hostname==='data.humdata.org'? '5cbf12bc9984628fb2c55a49daf32e74' : '99035923ee0a67880e6c05ab92b6cbc0';
-    mixpanel.init(MIXPANEL_TOKEN);
-    mixpanel.track('page view', {
-      'page title': document.title,
-      'page type': 'datavis'
-    });
-  }
-
   initMap();
-  initTracking();
 });
