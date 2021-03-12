@@ -318,7 +318,7 @@ $( document ).ready(function() {
       map.flyTo(location);
       map.on('moveend', function(e){
         console.log('map end');
-        parent.mapEnd();
+        window.parent.postMessage('map_end')
       });
     }
   }
