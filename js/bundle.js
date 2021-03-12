@@ -293,6 +293,7 @@ $( document ).ready(function() {
   }
 
   function handleStepEnter(response) {
+    console.log('enter step ', response.index);
     currentIndex = response.index;
     var chapter = config.chapters[currentIndex];
     var location = chapter.location;
