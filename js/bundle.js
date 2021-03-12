@@ -317,7 +317,7 @@ $( document ).ready(function() {
       //zoom into adan
       map.flyTo(location);
       map.on('moveend', function(e){
-        console.log('map end');
+        console.log('map end', response.index);
         window.parent.postMessage('map_end')
       });
     }
