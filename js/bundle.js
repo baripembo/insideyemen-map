@@ -320,7 +320,7 @@ $( document ).ready(function() {
         console.log('map end', response.index);
         parent.postMessage(
           true,
-          "http://0.0.0.0/");
+          "http://0.0.0.0:8000/");
         });
     }
   }
