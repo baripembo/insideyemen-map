@@ -293,7 +293,6 @@ $( document ).ready(function() {
   }
 
   function handleStepEnter(response) {
-    console.log('enter step ', response.index, geoDataArray[response.index].features.geometry.coordinates);
     currentIndex = response.index;
     var chapter = config.chapters[currentIndex];
     var location = chapter.location;
@@ -306,6 +305,7 @@ $( document ).ready(function() {
     });
 
     if (geoDataArray[response.index]!==undefined) {
+    console.log('enter step ', response.index, geoDataArray[response.index].features[0].geometry.coordinates);
       var padding = 0;
       setMapBounds(geoDataArray[response.index], chapter.paddingBottom, chapter.location.bearing, chapter.location.pitch);
 
