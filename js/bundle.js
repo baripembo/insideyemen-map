@@ -213,12 +213,24 @@ $( document ).ready(function() {
   function initMap() {
     console.log('Loading map...');
 
-    var zoomLevel = 4.7;
+    // var zoomLevel = 4.7;
+    // map = new mapboxgl.Map({
+    //   container: 'map',
+    //   style: 'mapbox://styles/humdata/ckfx2jgjd10qx1bnzkla9px41/',
+    //   center: [47, 20],
+    //   minZoom: 1,
+    //   zoom: zoomLevel,
+    //   attributionControl: false
+    // });
+
+
+    var zoomLevel = 6.13;
     map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/humdata/ckfx2jgjd10qx1bnzkla9px41/',
       center: [48.21908, 15.53492],
-      zoom: 6.13,
+      minZoom: 1,
+      zoom: zoomLevel,
       attributionControl: false
     });
     map.scrollZoom.disable();
@@ -305,7 +317,7 @@ $( document ).ready(function() {
     });
 
     if (geoDataArray[response.index]!==undefined) {
-    console.log('enter step ', response.index, geoDataArray[response.index].features[0].geometry.coordinates);
+    console.log('enter step ', response.index, geoDataArray[response.index].features[0].geometry.coordinates[0]);
       var padding = 0;
       setMapBounds(geoDataArray[response.index], chapter.paddingBottom, chapter.location.bearing, chapter.location.pitch);
 
