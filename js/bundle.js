@@ -318,8 +318,10 @@ $( document ).ready(function() {
       map.flyTo(location);
       map.on('moveend', function(e){
         console.log('map end', response.index);
-        window.parent.postMessage('map_end')
-      });
+        parent.postMessage(
+          true,
+          "http://0.0.0.0/");
+        });
     }
   }
 
