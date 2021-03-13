@@ -340,17 +340,18 @@ $( document ).ready(function() {
   }
 
   function handleStepExit(response) {
-    // if (response.index==0 || response.index==config.chapters.length-1) {
-    //   if (response.index==0) {
-    //     var location = {
-    //       center: [48.21908, 15.53492],
-    //       zoom: 6.13,
-    //       pitch: 0,
-    //       bearing: 0
-    //     };
-    //     map.flyTo(location);
-    //   }
-    // }
+    console.log('exit step');
+    if (response.index==0 || response.index==config.chapters.length-1) {
+      if (response.index==0) {
+        var location = {
+          center: [48.21908, 15.53492],
+          zoom: 6.13,
+          pitch: 0,
+          bearing: 0
+        };
+        map.flyTo(location);
+      }
+    }
   }
 
   initMap();
