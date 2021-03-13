@@ -317,9 +317,7 @@ $( document ).ready(function() {
     });
 
     if (geoDataArray[response.index]!==undefined) {
-    console.log('enter step ', response.index, geoDataArray[response.index].features[0].geometry.coordinates[0]);
       var padding = 0;
-      if (response.index==0) map.flyTo(geoDataArray[response.index].features[0].geometry.coordinates[0]);
       setMapBounds(geoDataArray[response.index], chapter.paddingBottom, chapter.location.bearing, chapter.location.pitch);
 
       if (animationDone) {
@@ -334,24 +332,23 @@ $( document ).ready(function() {
         console.log('map end', response.index);
         parent.postMessage(
           true,
-          "http://0.0.0.0:8000/");
+          "*");
         });
     }
   }
 
   function handleStepExit(response) {
-    console.log('exit step');
-    if (response.index==0 || response.index==config.chapters.length-1) {
-      if (response.index==0) {
-        var location = {
-          center: [48.21908, 15.53492],
-          zoom: 6.13,
-          pitch: 0,
-          bearing: 0
-        };
-        map.flyTo(location);
-      }
-    }
+    // if (response.index==0 || response.index==config.chapters.length-1) {
+    //   if (response.index==0) {
+    //     var location = {
+    //       center: [48.21908, 15.53492],
+    //       zoom: 6.13,
+    //       pitch: 0,
+    //       bearing: 0
+    //     };
+    //     map.flyTo(location);
+    //   }
+    // }
   }
 
   initMap();
