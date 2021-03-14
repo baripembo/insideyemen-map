@@ -148,12 +148,9 @@ a {
     color: #006ABF; }
 
 p {
-  color: #FFF;
-  font-family: Roboto, sans-serif;
-  font-size: 21px;
-  font-weight: bold;
-  letter-spacing: 0.2px;
-  line-height: 38px;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 30px;
   margin: 28px 0; }
 
 .center-align {
@@ -223,9 +220,13 @@ figure p {
     color: #FFF;
     padding: 15px 25px; }
     .step div p {
-      font-size: 16px;
-      line-height: 26px;
-      margin: 18px 0; }
+      color: #FFF;
+      font-family: Roboto, sans-serif;
+      font-size: 21px;
+      font-weight: bold;
+      letter-spacing: 0.2px;
+      line-height: 38px;
+      margin: 28px 0; }
   .step:last-child {
     margin-bottom: 0; }
   .step.is-active {
