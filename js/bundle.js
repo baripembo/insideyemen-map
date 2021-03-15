@@ -322,14 +322,17 @@ $( document ).ready(function() {
       map.flyTo(location);
       map.on('moveend', function(e){
         if ((scrollDir=='down'&&currentIndex==3) || (scrollDir=='up'&&currentIndex==0)) {
-          console.log('map end', response.index);
-          parent.postMessage(true, "*");
+          setTimeout(function(){ 
+            console.log('map end', response.index);
+            parent.postMessage(true, "*");
+          }, 1000);
         }
       });
     }
   }
 
   function handleStepExit(response) {
+    console.log('handleStepExit', response.index)
     // if (response.index==0 || response.index==config.chapters.length-1) {
     //   if (response.index==0) {
     //     var location = {
