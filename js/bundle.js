@@ -123,9 +123,9 @@ function setMapBounds(points, paddingBottom, bearing, pitch) {
   map.fitBounds(bbox, {padding: padding, bearing: bearing, pitch: pitch});
 }
 
-var map, scroller, main, scrolly, figure, article, step, geoDataArray, viewportWidth, viewportHeight, isMobile;
+var map, scroller, main, scrolly, figure, article, step, geoDataArray, viewportWidth, viewportHeight, isMobile, scrollDir;
 var mapReset = false;
-var currentIndex = 1;
+var currentIndex, previousIndex = 1;
 
 $( document ).ready(function() {
   const DATA_URL = 'data/';
@@ -295,7 +295,10 @@ $( document ).ready(function() {
   }
 
   function handleStepEnter(response) {
+    previousIndex = currentIndex;
     currentIndex = response.index;
+    scrollDir = (previousIndex<currentIndex) ? 'down' : 'up';
+    console.log('scrollDir',scrollDir);
     var chapter = config.chapters[currentIndex];
     var location = chapter.location;
 
