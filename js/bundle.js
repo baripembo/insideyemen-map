@@ -315,11 +315,11 @@ $( document ).ready(function() {
     else {
       //zoom into adan
       map.flyTo(location);
-      map.on('moveend', function(e){
-        if ((scrollDir=='down'&&currentIndex==3) || (scrollDir=='up'&&currentIndex==0)) {
+      // map.on('moveend', function(e){
+      //   if ((scrollDir=='down'&&currentIndex==3) || (scrollDir=='up'&&currentIndex==0)) {
           
-        }
-      });
+      //   }
+      // });
     }
   }
 
