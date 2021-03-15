@@ -213,17 +213,6 @@ $( document ).ready(function() {
   function initMap() {
     console.log('Loading map...');
 
-    // var zoomLevel = 4.7;
-    // map = new mapboxgl.Map({
-    //   container: 'map',
-    //   style: 'mapbox://styles/humdata/ckfx2jgjd10qx1bnzkla9px41/',
-    //   center: [47, 20],
-    //   minZoom: 1,
-    //   zoom: zoomLevel,
-    //   attributionControl: false
-    // });
-
-
     var zoomLevel = 6.13;
     map = new mapboxgl.Map({
       container: 'map',
@@ -338,6 +327,7 @@ $( document ).ready(function() {
   }
 
   function handleStepExit(response) {
+    console.log('step exit', response.index);
     // if (response.index==0 || response.index==config.chapters.length-1) {
     //   if (response.index==0) {
     //     var location = {
