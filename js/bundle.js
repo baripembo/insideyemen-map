@@ -110,12 +110,6 @@ function setupStickyfill() {
   });
 }
 
-function preload(arrayOfImages) {
-  $(arrayOfImages).each(function(){
-    (new Image()).src = this;
-  });
-}
-
 
 function setMapBounds(points, paddingBottom, bearing, pitch) {
   let bbox = turf.extent(points);
@@ -298,6 +292,7 @@ $( document ).ready(function() {
     lastIndex = currentIndex;
     currentIndex = response.index;
     scrollDir = (lastIndex<currentIndex) ? 'down' : 'up';
+    console.log('handleStepEnter', response.index, scrollDir)
     var chapter = config.chapters[currentIndex];
     var location = chapter.location;
 
@@ -332,7 +327,7 @@ $( document ).ready(function() {
   }
 
   function handleStepExit(response) {
-    console.log('handleStepExit', response.index)
+    console.log('handleStepExit', response.index, scrollDir)
     // if (response.index==0 || response.index==config.chapters.length-1) {
     //   if (response.index==0) {
     //     var location = {
