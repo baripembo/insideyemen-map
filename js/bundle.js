@@ -92,7 +92,7 @@ function handleResize() {
   step.style("height", stepH + "px");
 
   //double height of last step
-  if (!isMobile) $(".step[data-step='4']").css("height", stepH*1.5 + "px");
+  //if (!isMobile) $(".step[data-step='4']").css("height", stepH*1.5 + "px");
 
   var figureHeight = window.innerHeight;
   var figureMarginTop = (window.innerHeight - figureHeight) / 2;
@@ -279,7 +279,7 @@ $( document ).ready(function() {
       .setup({
         step: '.step',
         offset: 0.7,
-        debug: false
+        debug: true
       })
       .onStepEnter(handleStepEnter)
       .onStepExit(handleStepExit);
@@ -292,9 +292,9 @@ $( document ).ready(function() {
     lastIndex = currentIndex;
     currentIndex = response.index;
     scrollDir = (lastIndex<currentIndex) ? 'down' : 'up';
-    console.log('handleStepEnter', response.index, scrollDir)
+    //console.log('handleStepEnter', response.index, scrollDir)
     var chapter = config.chapters[currentIndex];
-    var location = chapter.location;
+    var location = (chapter!=undefined) ? chapter.location : '';
 
     map.setLayoutProperty('locationPoints', 'visibility', 'visible');
 
@@ -317,10 +317,7 @@ $( document ).ready(function() {
       map.flyTo(location);
       map.on('moveend', function(e){
         if ((scrollDir=='down'&&currentIndex==3) || (scrollDir=='up'&&currentIndex==0)) {
-          setTimeout(function(){ 
-            console.log('map end', response.index);
-            parent.postMessage(true, "*");
-          }, 1000);
+          
         }
       });
     }
@@ -328,6 +325,10 @@ $( document ).ready(function() {
 
   function handleStepExit(response) {
     console.log('handleStepExit', response.index, scrollDir)
+    if (response.index==3) {
+      console.log('map end', response.index);
+      parent.postMessage(true, "*");
+    }
     // if (response.index==0 || response.index==config.chapters.length-1) {
     //   if (response.index==0) {
     //     var location = {

@@ -227,6 +227,8 @@ figure p {
       letter-spacing: 0.2px;
       line-height: 38px;
       margin: 28px 0; }
+    .step div.end.active {
+      opacity: 0; }
   .step:last-child {
     margin-bottom: 0; }
   .step.is-active {
