@@ -124,8 +124,8 @@ function setMapBounds(points, paddingBottom, bearing, pitch) {
 }
 
 var map, scroller, main, scrolly, figure, article, step, geoDataArray, viewportWidth, viewportHeight, isMobile, scrollDir;
-var previousIndex = 0;
-var currentIndex = 1;
+var currentIndex = -1;
+var lastIndex = currentIndex;
 
 $( document ).ready(function() {
   const DATA_URL = 'data/';
@@ -295,10 +295,9 @@ $( document ).ready(function() {
   }
 
   function handleStepEnter(response) {
-    previousIndex = currentIndex;
+    lastIndex = currentIndex;
     currentIndex = response.index;
-    scrollDir = (previousIndex<currentIndex) ? 'down' : 'up';
-    console.log('scrollDir',scrollDir);
+    scrollDir = (lastIndex<currentIndex) ? 'down' : 'up';
     var chapter = config.chapters[currentIndex];
     var location = chapter.location;
 
@@ -322,7 +321,7 @@ $( document ).ready(function() {
       //zoom into adan
       map.flyTo(location);
       map.on('moveend', function(e){
-        if ((scrollDir=='down'&&response.index==3) || (scrollDir=='up'&&response.index==0)) {
+        if ((scrollDir=='down'&&currentIndex==3) || (scrollDir=='up'&&currentIndex==0)) {
           console.log('map end', response.index);
           parent.postMessage(true, "*");
         }
