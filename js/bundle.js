@@ -124,6 +124,7 @@ function setMapBounds(points, paddingBottom, bearing, pitch) {
 }
 
 var map, scroller, main, scrolly, figure, article, step, geoDataArray, viewportWidth, viewportHeight, isMobile;
+var mapReset = false;
 var currentIndex = 1;
 
 $( document ).ready(function() {
@@ -319,10 +320,12 @@ $( document ).ready(function() {
       map.flyTo(location);
       map.on('moveend', function(e){
         console.log('map end', response.index);
-        parent.postMessage(
-          true,
-          "*");
-        });
+        if (!mapReset) {
+          parent.postMessage(true, "*");
+          mapReset = true;
+        }
+      });
+      mapReset = false;
     }
   }
 
