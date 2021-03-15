@@ -124,8 +124,8 @@ function setMapBounds(points, paddingBottom, bearing, pitch) {
 }
 
 var map, scroller, main, scrolly, figure, article, step, geoDataArray, viewportWidth, viewportHeight, isMobile, scrollDir;
-var mapReset = false;
-var currentIndex, previousIndex = 1;
+var previousIndex = 0;
+var currentIndex = 1;
 
 $( document ).ready(function() {
   const DATA_URL = 'data/';
@@ -322,18 +322,15 @@ $( document ).ready(function() {
       //zoom into adan
       map.flyTo(location);
       map.on('moveend', function(e){
-        console.log('map end', response.index);
-        if (!mapReset) {
+        if ((scrollDir=='down'&&response.index==3) || (scrollDir=='up'&&response.index==0)) {
+          console.log('map end', response.index);
           parent.postMessage(true, "*");
-          mapReset = true;
         }
       });
-      mapReset = false;
     }
   }
 
   function handleStepExit(response) {
-    console.log('step exit', response.index);
     // if (response.index==0 || response.index==config.chapters.length-1) {
     //   if (response.index==0) {
     //     var location = {
