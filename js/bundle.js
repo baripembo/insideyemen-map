@@ -325,7 +325,7 @@ $( document ).ready(function() {
 
   function handleStepExit(response) {
     console.log('handleStepExit', response.index, scrollDir)
-    if ((scrollDir=='down'&&response.index==3) || (scrollDir=='up'&&response.index==0)) {
+    if ((scrollDir=='down'&&response.index==4) || (scrollDir=='up'&&response.index==0)) {
       console.log('map end', response.index);
       parent.postMessage(true, "*");
     }
